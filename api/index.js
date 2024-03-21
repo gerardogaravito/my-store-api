@@ -14,7 +14,7 @@ app.use(express.json())
 const whitelist = ['http://localhost:8080', 'https://garavito.dev']
 const options = {
   origin: (origin, callback) => {
-    if (whitelist.includes(origin) || !origin) {
+    if (whitelist.includes(origin) || !origin || origin.startsWith('https://my-store-api-sigma.vercel.app/api/')) {
       callback(null, true)
     }
     callback(new Error('no permitido'))
